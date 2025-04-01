@@ -232,27 +232,27 @@
 <script src="assets/manifest.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const savedImage = localStorage.getItem('uploadedImage');
+        const savedImage = IndexedDB.getItem('uploadedImage');
         if (savedImage) {
             document.querySelector('.inset .id_own_image').style.backgroundImage = `url(${savedImage})`;
             document.querySelector('.id_own_image').style.backgroundImage = `url(${savedImage})`;
         }
         
         const urlParams = new URLSearchParams(window.location.search);
-        const localStorageData = JSON.parse(localStorage.getItem('formData') || '{}');
+        const IndexedDBData = JSON.parse(IndexedDB.getItem('formData') || '{}');
         
         const fields = {
-            'name': urlParams.get('name') || localStorageData.name || '',
-            'surname': urlParams.get('surname') || localStorageData.surname || '',
-            'nationality': urlParams.get('nationality') || localStorageData.nationality || '',
-            'birthday': urlParams.get('birthday') || localStorageData.birthday || '',
-            'familyName': urlParams.get('familyName') || localStorageData.familyName || '',
-            'sex': urlParams.get('sex') || localStorageData.sex || 'm',
-            'fathersFamilyName': urlParams.get('fathersFamilyName') || localStorageData.fathersFamilyName || '',
-            'mothersFamilyName': urlParams.get('mothersFamilyName') || localStorageData.mothersFamilyName || '',
-            'birthPlace': urlParams.get('birthPlace') || localStorageData.birthPlace || '',
-            'countryOfBirth': urlParams.get('countryOfBirth') || localStorageData.countryOfBirth || '',
-            'adress': urlParams.get('adress') || localStorageData.adress || ''
+            'name': urlParams.get('name') || IndexedDBData.name || '',
+            'surname': urlParams.get('surname') || IndexedDBData.surname || '',
+            'nationality': urlParams.get('nationality') || IndexedDBData.nationality || '',
+            'birthday': urlParams.get('birthday') || IndexedDBData.birthday || '',
+            'familyName': urlParams.get('familyName') || IndexedDBData.familyName || '',
+            'sex': urlParams.get('sex') || IndexedDBData.sex || 'm',
+            'fathersFamilyName': urlParams.get('fathersFamilyName') || IndexedDBData.fathersFamilyName || '',
+            'mothersFamilyName': urlParams.get('mothersFamilyName') || IndexedDBData.mothersFamilyName || '',
+            'birthPlace': urlParams.get('birthPlace') || IndexedDBData.birthPlace || '',
+            'countryOfBirth': urlParams.get('countryOfBirth') || IndexedDBData.countryOfBirth || '',
+            'adress': urlParams.get('adress') || IndexedDBData.adress || ''
         };
 
         Object.keys(fields).forEach(key => {
