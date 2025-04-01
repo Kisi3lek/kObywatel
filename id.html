@@ -232,27 +232,27 @@
 <script src="assets/manifest.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const savedImage = IndexedDB.getItem('uploadedImage');
+        const savedImage = sessionStorage.getItem('uploadedImage');
         if (savedImage) {
             document.querySelector('.inset .id_own_image').style.backgroundImage = `url(${savedImage})`;
             document.querySelector('.id_own_image').style.backgroundImage = `url(${savedImage})`;
         }
         
         const urlParams = new URLSearchParams(window.location.search);
-        const IndexedDBData = JSON.parse(IndexedDB.getItem('formData') || '{}');
+        const sessionStorageData = JSON.parse(sessionStorage.getItem('formData') || '{}');
         
         const fields = {
-            'name': urlParams.get('name') || IndexedDBData.name || '',
-            'surname': urlParams.get('surname') || IndexedDBData.surname || '',
-            'nationality': urlParams.get('nationality') || IndexedDBData.nationality || '',
-            'birthday': urlParams.get('birthday') || IndexedDBData.birthday || '',
-            'familyName': urlParams.get('familyName') || IndexedDBData.familyName || '',
-            'sex': urlParams.get('sex') || IndexedDBData.sex || 'm',
-            'fathersFamilyName': urlParams.get('fathersFamilyName') || IndexedDBData.fathersFamilyName || '',
-            'mothersFamilyName': urlParams.get('mothersFamilyName') || IndexedDBData.mothersFamilyName || '',
-            'birthPlace': urlParams.get('birthPlace') || IndexedDBData.birthPlace || '',
-            'countryOfBirth': urlParams.get('countryOfBirth') || IndexedDBData.countryOfBirth || '',
-            'adress': urlParams.get('adress') || IndexedDBData.adress || ''
+            'name': urlParams.get('name') || sessionStorageData.name || '',
+            'surname': urlParams.get('surname') || sessionStorageData.surname || '',
+            'nationality': urlParams.get('nationality') || sessionStorageData.nationality || '',
+            'birthday': urlParams.get('birthday') || sessionStorageData.birthday || '',
+            'familyName': urlParams.get('familyName') || sessionStorageData.familyName || '',
+            'sex': urlParams.get('sex') || sessionStorageData.sex || 'm',
+            'fathersFamilyName': urlParams.get('fathersFamilyName') || sessionStorageData.fathersFamilyName || '',
+            'mothersFamilyName': urlParams.get('mothersFamilyName') || sessionStorageData.mothersFamilyName || '',
+            'birthPlace': urlParams.get('birthPlace') || sessionStorageData.birthPlace || '',
+            'countryOfBirth': urlParams.get('countryOfBirth') || sessionStorageData.countryOfBirth || '',
+            'adress': urlParams.get('adress') || sessionStorageData.adress || ''
         };
 
         Object.keys(fields).forEach(key => {
